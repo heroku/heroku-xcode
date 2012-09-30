@@ -29,4 +29,6 @@ end
 
 class Heroku::Command::Config < Heroku::Command::Base
   include Heroku::Xcode
+
+  method_added "xcode"
 end
