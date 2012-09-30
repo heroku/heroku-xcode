@@ -27,7 +27,20 @@ To add this configuration file to your Xcode project, select the Project file fr
 
 ![Xcode Configuration](https://github.com/heroku/heroku-xcode/raw/gh-pages/xcode-configuration-screenshot.png)
 
-Now in your project, you will have access to these values (such as `DATABASE_URL`) in code.
+Now in your project, you will have access to these values (such as `DATABASE_URL`) in preprocessor macros.
+
+To use the string literal values of these preprocessor definitions, add the following to your `Prefix.pch` file:
+
+```c
+#define xstr(a) str(a)
+#define str(a) #a
+```
+
+With these macros, you can access C string representations of the macro definition values like this:
+
+```objective-c
+NSString *databaseURLString = [NSString stringWithUTF8String:xstr(DATABASE_URL)];
+```
 
 ## Contact
 
