@@ -19,7 +19,7 @@ module Heroku
         config = %{GCC_PREPROCESSOR_DEFINITIONS = $(inherited) #{vars.join(" ")}\n}
         display(config)
 
-        File.open("Heroku.xcconfig", 'w') do |f|
+        File.open("#{app}.xcconfig", 'w') do |f|
           f.write(config)
         end
       end
