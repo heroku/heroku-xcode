@@ -1,5 +1,7 @@
 module Heroku
   module Xcode
+    RESERVED_KEYS = ["PATH", "LANG"]
+
     # config:xcode
     #
     # write environment variables out to .xcconfig file
@@ -15,6 +17,8 @@ module Heroku
       if vars.empty?
         display("#{app} has no config vars.")
       else
+        RESERVED_KEYS.each{|key| vars.delete(key)}
+
         filename = "#{app}.xcconfig"
         config = %{GCC_PREPROCESSOR_DEFINITIONS = $(inherited) #{vars.collect{|k,v| "\"#{k}=#{v}\""}.join(" ")}\n}
         File.open(filename, 'w') do |f|
