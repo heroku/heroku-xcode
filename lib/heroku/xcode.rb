@@ -15,12 +15,13 @@ module Heroku
       if vars.empty?
         display("#{app} has no config vars.")
       else
-        config = %{GCC_PREPROCESSOR_DEFINITIONS = $(inherited) #{vars.collect{|k,v| "#{k}=#{v}"}.join(" ")}\n}
-        display(config)
-
-        File.open("#{app}.xcconfig", 'w') do |f|
+        filename = "#{app}.xcconfig"
+        config = %{GCC_PREPROCESSOR_DEFINITIONS = $(inherited) #{vars.collect{|k,v| "\"#{k}=#{v}\""}.join(" ")}\n}
+        File.open(filename, 'w') do |f|
           f.write(config)
         end
+
+        display("Config variables successfully written to #{filename}")
       end
     end
   end
