@@ -1,2 +1,2 @@
+require 'heroku/command'
 require 'heroku/xcode'
-require 'heroku/command/config'
