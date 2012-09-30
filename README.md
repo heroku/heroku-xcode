@@ -3,6 +3,10 @@ Heroku Xcode Plugin
 
 Heroku-Xcode is a Heroku CLI plugin that downloads environment variables from an app to an Xcode configuration file (.xcconfig).
 
+This plugin allows you to extend the best-practice of storing config in the environment, as described in [The 12 Factor App](http://www.12factor.net/config), by synchronizing configuration values between the client and server.
+
+> We recommend that you add any resulting `.xcconfig` files to your `.gitignore`, opting instead to provide instructions on how to download the remote configuration. Doing this will protect any sensitive information, such as passwords, API keys, and other values used by your project.
+
 ## Installation
 
 Install the [Heroku Toolbelt](https://toolbelt.heroku.com), if you have not done so already. Once installed, you'll have access to the `heroku` command from your command shell.
