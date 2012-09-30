@@ -23,6 +23,12 @@ $ heroku config:xcode -a app_name
 
 If successful, this command will generate a file with a name like `app_name.xcconfig`.
 
+To add this configuration file to your Xcode project, select the Project file from the Project Navigator, and select the project again from the sidebar, under the "Project" heading. Under "Configurations", set the Debug, Release, and / or Ad Hoc to be based on the `app_name` configuration.
+
+![Xcode Configuration](https://github.com/heroku/heroku-xcode/raw/gh-pages/xcode-configuration-screenshot.png)
+
+Now in your project, you will have access to these values (such as `DATABASE_URL`) in code.
+
 ## Contact
 
 Mattt Thompson
